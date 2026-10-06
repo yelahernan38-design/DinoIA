@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Peter IA</title>
+
+
+<style>
+
+/* =========================
+   CUERPO
+========================= */
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b0000,
+            #080000 55%,
+            #000000
+        );
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+}
+
+
+/* =========================
+   APLICACIÓN
+========================= */
+
+.app {
+
+    width: 90%;
+
+    max-width: 700px;
+
+    min-height: 700px;
+
+    padding: 30px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(10, 10, 10, 0.75);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 0 50px rgba(255, 0, 0, 0.25);
+
+    text-align: center;
+
+}
+
+
+/* =========================
+   TITULO
+========================= */
+
+h1 {
+
+    margin-bottom: 5px;
+
+    font-size: 42px;
+
+}
+
+.subtitulo {
+
+    opacity: 0.7;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================
+   CARA DE PETER
+========================= */
+
+.peter {
+
+    width: 300px;
+
+    height: 300px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff5555,
+            #d40000 45%,
+            #750000 80%
+        );
+
+    border: 8px solid #050505;
+
+    box-shadow:
+
+        inset 0 0 30px #330000,
+
+        0 0 30px rgba(255,0,0,0.6);
+
+    transition: 0.3s;
+
+}
+
+
+/* =========================
+   TELARAÑA
+========================= */
+
+.telaraña {
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+}
+
+
+.telaraña span {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 4px;
+
+    height: 140%;
+
+    background: rgba(0,0,0,0.7);
+
+    transform-origin: center;
+
+}
+
+
+.telaraña span:nth-child(1) {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(0deg);
+
+}
+
+
+.telaraña span:nth-child(2) {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+
+}
+
+
+.telaraña span:nth-child(3) {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg);
+
+}
+
+
+.telaraña span:nth-child(4) {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(135deg);
+
+}
+
+
+.telaraña .circulo {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    border: 3px solid rgba(0,0,0,0.7);
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+}
+
+
+.circulo:nth-of-type(1) {
+
+    width: 60px;
+
+    height: 60px;
+
+}
+
+
+.circulo:nth-of-type(2) {
+
+    width: 120px;
+
+    height: 120px;
+
+}
+
+
+.circulo:nth-of-type(3) {
+
+    width: 180px;
+
+    height: 180px;
+
+}
+
+
+.circulo:nth-of-type(4) {
+
+    width: 240px;
+
+    height: 240px;
+
+}
+
+
+/* =========================
+   OJOS
+========================= */
+
+.ojo {
+
+    position: absolute;
+
+    width: 82px;
+
+    height: 115px;
+
+    background: white;
+
+    border: 6px solid black;
+
+    border-radius: 50% 50% 45% 45%;
+
+    top: 90px;
+
+    transition: 0.2s;
+
+    overflow: hidden;
+
+}
+
+
+.ojo::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+
+    height: 18px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    top: 15px;
+
+    left: 18px;
+
+}
+
+
+.ojo.izquierdo {
+
+    left: 48px;
+
+    transform: rotate(-12deg);
+
+}
+
+
+.ojo.derecho {
+
+    right: 48px;
+
+    transform: rotate(12deg);
+
+}
+
+
+/* =========================
+   PARPADEO
+========================= */
+
+.ojo.parpadeando {
+
+    height: 15px;
+
+    top: 140px;
+
+}
+
+
+/* =========================
+   ESCUCHANDO
+========================= */
+
+.peter.escuchando {
+
+    box-shadow:
+
+        inset 0 0 30px #330000,
+
+        0 0 45px white;
+
+}
+
+
+.peter.escuchando .ojo {
+
+    height: 125px;
+
+}
+
+
+/* =========================
+   PENSANDO
+========================= */
+
+.peter.pensando {
+
+    box-shadow:
+
+        inset 0 0 30px #001133,
+
+        0 0 50px #0088ff;
+
+}
+
+
+.peter.pensando .ojo {
+
+    height: 75px;
+
+}
+
+
+/* =========================
+   HABLANDO
+========================= */
+
+.peter.hablando {
+
+    animation:
+
+        hablarPeter
+        0.7s
+        infinite alternate;
+
+}
+
+
+.peter.hablando .telaraña {
+
+    animation:
+
+        telaranaHabla
+        0.8s
+        infinite alternate;
+
+}
+
+
+@keyframes hablarPeter {
+
+    from {
+
+        box-shadow:
+
+            inset 0 0 30px #330000,
+
+            0 0 30px rgba(255,0,0,0.5);
+
+    }
+
+    to {
+
+        box-shadow:
+
+            inset 0 0 40px #550000,
+
+            0 0 70px red;
+
+    }
+
+}
+
+
+@keyframes telaranaHabla {
+
+    from {
+
+        opacity: 0.6;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+button {
+
+    padding: 15px 25px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #e00000;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+button:hover {
+
+    background: #ff2222;
+
+    transform: scale(1.05);
+
+}
+
+
+button:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* =========================
+   ESTADO
+========================= */
+
+#estado {
+
+    margin: 15px;
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================
+   RESPUESTA
+========================= */
+
+#respuesta {
+
+    margin-top: 20px;
+
+    min-height: 60px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.05);
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .app {
+
+        width: 85%;
+
+        min-height: auto;
+
+        padding: 20px;
+
+    }
+
+
+    .peter {
+
+        width: 250px;
+
+        height: 250px;
+
+    }
+
+
+    .ojo {
+
+        width: 65px;
+
+        height: 95px;
+
+        top: 75px;
+
+    }
+
+
+    .ojo.izquierdo {
+
+        left: 40px;
+
+    }
+
+
+    .ojo.derecho {
+
+        right: 40px;
+
+    }
+
+}
+
+
+/* =========================
+   NOMBRE
+========================= */
+
+.nombre {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <h1>Peter 🕷️</h1>
+
+    <div class="subtitulo">
+        Tu compañero virtual arácnido
+    </div>
+
+
+    <div
+        class="peter"
+        id="peter"
+    >
+
+
+        <div class="telaraña">
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+
+            <div class="circulo"></div>
+
+            <div class="circulo"></div>
+
+            <div class="circulo"></div>
+
+            <div class="circulo"></div>
+
+        </div>
+
+
+        <div
+            class="ojo izquierdo"
+            id="ojoIzquierdo"
+        ></div>
+
+
+        <div
+            class="ojo derecho"
+            id="ojoDerecho"
+        ></div>
+
+
+    </div>
+
+
+    <div class="nombre">
+        Peter
+    </div>
+
+
+    <div id="estado">
+        Pulsa el botón y háblame
+    </div>
+
+
+    <button onclick="hablar()">
+
+        🎤 Hablar con Peter
+
+    </button>
+
+
+    <div id="respuesta"></div>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const peter =
+    document.getElementById(
+        "peter"
+    );
+
+
+const estado =
+    document.getElementById(
+        "estado"
+    );
+
+
+const respuesta =
+    document.getElementById(
+        "respuesta"
+    );
+
+
+const ojoIzquierdo =
+    document.getElementById(
+        "ojoIzquierdo"
+    );
+
+
+const ojoDerecho =
+    document.getElementById(
+        "ojoDerecho"
+    );
+
+
+/* =========================
+   PARPADEO
+========================= */
+
+function parpadear() {
+
+    ojoIzquierdo.classList.add(
+        "parpadeando"
+    );
+
+    ojoDerecho.classList.add(
+        "parpadeando"
+    );
+
+
+    setTimeout(() => {
+
+        ojoIzquierdo.classList.remove(
+            "parpadeando"
+        );
+
+        ojoDerecho.classList.remove(
+            "parpadeando"
+        );
+
+    }, 150);
+
+}
+
+
+function programarParpadeo() {
+
+    const tiempo =
+        Math.random() * 4000 + 2000;
+
+
+    setTimeout(() => {
+
+        parpadear();
+
+        programarParpadeo();
+
+    }, tiempo);
+
+}
+
+
+programarParpadeo();
+
+
+/* =========================
+   EXPRESIONES
+========================= */
+
+function cambiarExpresion(
+    expresion
+) {
+
+    peter.classList.remove(
+        "escuchando",
+        "pensando",
+        "hablando"
+    );
+
+
+    if (expresion) {
+
+        peter.classList.add(
+            expresion
+        );
+
+    }
+
+}
+
+
+/* =========================
+   OJOS SIGUEN EL MOUSE
+========================= */
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            peter.getBoundingClientRect();
+
+
+        const centroX =
+            rect.left +
+            rect.width / 2;
+
+
+        const centroY =
+            rect.top +
+            rect.height / 2;
+
+
+        const dx =
+            event.clientX -
+            centroX;
+
+
+        const dy =
+            event.clientY -
+            centroY;
+
+
+        const distancia =
+            Math.sqrt(
+                dx * dx +
+                dy * dy
+            );
+
+
+        const limite = 12;
+
+
+        let movimientoX = 0;
+
+        let movimientoY = 0;
+
+
+        if (distancia > 0) {
+
+            movimientoX =
+                (dx / distancia) *
+                limite;
+
+            movimientoY =
+                (dy / distancia) *
+                limite;
+
+        }
+
+
+        ojoIzquierdo.style.transform =
+            `translate(${movimientoX}px, ${movimientoY}px) rotate(-12deg)`;
+
+
+        ojoDerecho.style.transform =
+            `translate(${movimientoX}px, ${movimientoY}px) rotate(12deg)`;
+
+    }
+);
+
+
+/* =========================
+   🧹 LIMPIAR TEXTO PARA LA VOZ
+========================= */
+
+function limpiarTextoParaVoz(
+    texto
+) {
+
+    let limpio = texto;
+
+
+    /*
+        Quitar emojis
+    */
+
+    limpio =
+        limpio.replace(
+            /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
+            ""
+        );
+
+
+    /*
+        Quitar markdown
+        como:
+
+        **
+        *
+        _
+        #
+        `
+        >
+    */
+
+    limpio =
+        limpio.replace(
+            /[*_#`>]/g,
+            ""
+        );
+
+
+    /*
+        Quitar algunos símbolos
+        que pueden sonar extraños.
+    */
+
+    limpio =
+        limpio.replace(
+            /[•►◆◇★☆❤️💕💡🔥🕷️🎤🧠🔊]/gu,
+            ""
+        );
+
+
+    /*
+        Quitar espacios repetidos
+    */
+
+    limpio =
+        limpio.replace(
+            /\s+/g,
+            " "
+        );
+
+
+    return limpio.trim();
+
+}
+
+
+/* =========================
+   🔊 VOZ DE PETER
+========================= */
+
+function hablarRespuesta(
+    texto
+) {
+
+    function reproducir() {
+
+        const voces =
+            speechSynthesis.getVoices();
+
+
+        console.log(
+            "VOCES DISPONIBLES:",
+            voces
+        );
+
+
+        /*
+            Buscamos exactamente
+            la voz que elegiste:
+
+            Google español — es-ES
+        */
+
+        let vozPeter =
+            voces.find(
+                voz =>
+                    voz.name ===
+                        "Google español"
+                    &&
+                    voz.lang ===
+                        "es-ES"
+            );
+
+
+        /*
+            Si Windows cambia
+            ligeramente el nombre,
+            buscamos una voz
+            equivalente.
+        */
+
+        if (!vozPeter) {
+
+            vozPeter =
+                voces.find(
+                    voz =>
+
+                        voz.name
+                            .toLowerCase()
+                            .includes(
+                                "google español"
+                            )
+
+                        &&
+
+                        voz.lang
+                            .toLowerCase()
+                            .startsWith(
+                                "es-es"
+                            )
+                );
+
+        }
+
+
+        /*
+            🧹 Limpiamos el texto
+            antes de hablar.
+        */
+
+        const textoVoz =
+            limpiarTextoParaVoz(
+                texto
+            );
+
+
+        const voz =
+            new SpeechSynthesisUtterance(
+                textoVoz
+            );
+
+
+        if (vozPeter) {
+
+            console.log(
+                "✅ USANDO: " +
+                vozPeter.name +
+                " — " +
+                vozPeter.lang
+            );
+
+
+            voz.voice =
+                vozPeter;
+
+
+            voz.lang =
+                vozPeter.lang;
+
+        } else {
+
+            console.log(
+                "⚠️ Google español — es-ES no encontrada."
+            );
+
+
+            voz.lang =
+                "es-ES";
+
+        }
+
+
+        voz.rate =
+            1;
+
+
+        voz.pitch =
+            1;
+
+
+        voz.volume =
+            1;
+
+
+        voz.onstart =
+            function() {
+
+                cambiarExpresion(
+                    "hablando"
+                );
+
+            };
+
+
+        voz.onend =
+            function() {
+
+                cambiarExpresion(
+                    null
+                );
+
+
+                estado.textContent =
+                    "Pulsa el botón y háblame";
+
+            };
+
+
+        voz.onerror =
+            function(error) {
+
+                console.error(
+                    "Error de voz:",
+                    error
+                );
+
+
+                cambiarExpresion(
+                    null
+                );
+
+            };
+
+
+        speechSynthesis.cancel();
+
+
+        speechSynthesis.speak(
+            voz
+        );
+
+    }
+
+
+    /*
+        Windows puede tardar
+        en cargar las voces.
+    */
+
+    const voces =
+        speechSynthesis.getVoices();
+
+
+    if (voces.length > 0) {
+
+        reproducir();
+
+    } else {
+
+        speechSynthesis.onvoiceschanged =
+            function() {
+
+                speechSynthesis.onvoiceschanged =
+                    null;
+
+                reproducir();
+
+            };
+
+    }
+
+}
+
+
+/* =========================
+   🎤 HABLAR CON PETER
+========================= */
+
+function hablar() {
+
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+    if (!SpeechRecognition) {
+
+        alert(
+            "Tu navegador no soporta reconocimiento de voz."
+        );
+
+        return;
+
+    }
+
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    recognition.lang =
+        "es-CO";
+
+
+    recognition.continuous =
+        false;
+
+
+    recognition.interimResults =
+        false;
+
+
+    estado.textContent =
+        "🎤 Peter está escuchando...";
+
+
+    cambiarExpresion(
+        "escuchando"
+    );
+
+
+    recognition.start();
+
+
+    recognition.onresult =
+        async function(event) {
+
+
+            const pregunta =
+                event.results[0][0].transcript;
+
+
+            respuesta.textContent =
+                "Tú: " +
+                pregunta;
+
+
+            estado.textContent =
+                "🧠 Peter está pensando...";
+
+
+            cambiarExpresion(
+                "pensando"
+            );
+
+
+            try {
+
+
+                const resultado =
+                    await fetch(
+                        "/preguntar",
+                        {
+
+                            method:
+                                "POST",
+
+                            headers:
+                                {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                            body:
+                                JSON.stringify({
+                                    pregunta:
+                                        pregunta
+                                })
+
+                        }
+                    );
+
+
+                const datos =
+                    await resultado.json();
+
+
+                if (datos.error) {
+
+                    throw new Error(
+                        datos.error
+                    );
+
+                }
+
+
+                respuesta.textContent =
+                    datos.respuesta;
+
+
+                estado.textContent =
+                    "🔊 Peter está hablando...";
+
+
+                hablarRespuesta(
+                    datos.respuesta
+                );
+
+
+            } catch (error) {
+
+
+                console.error(
+                    error
+                );
+
+
+                respuesta.textContent =
+                    "Peter tuvo un problema al responder.";
+
+
+                estado.textContent =
+                    "Hubo un error";
+
+
+                cambiarExpresion(
+                    null
+                );
+
+            }
+
+        };
+
+
+    recognition.onerror =
+        function(event) {
+
+            console.error(
+                "Error de reconocimiento:",
+                event.error
+            );
+
+
+            estado.textContent =
+                "No pude escucharte. Intenta otra vez.";
+
+
+            cambiarExpresion(
+                null
+            );
+
+        };
+
+
+    recognition.onend =
+        function() {
+
+            /*
+                No hacemos nada aquí porque
+                Peter puede estar pensando
+                o hablando.
+            */
+
+        };
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
